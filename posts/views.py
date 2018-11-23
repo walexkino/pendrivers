@@ -853,8 +853,8 @@ def ebook_detail(request, slug=None):
         "content_type": instance.get_content_type,
         "object_id": instance.id
     }
-
     form = CommentForm(request.POST or None, initial=initial_data)
+    
     if form.is_valid() and request.user.is_authenticated():
         c_type = form.cleaned_data.get("content_type")
         content_type = ContentType.objects.get(model=c_type)
@@ -870,43 +870,47 @@ def ebook_detail(request, slug=None):
             parent_qs = Comment.objects.filter(id=parent_id)
             if parent_qs.exists() and parent_qs.count() == 1:
                 parent_obj = parent_qs.first()
-        new_comment, created = Comment.objects.get_or_create(
+            new_comment, created = Comment.objects.get_or_create(
             user=request.user,
             content_type=content_type,
             object_id=obj_id,
             content=content_data,
             parent=parent_obj,
-        )
+            )
         return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
 
-    # Comment.objects.filter_by_instance(instance)
-    comments = instance.comments
-    in_cart = Cart.objects.filter(book=instance, user=request.user)
-    the_url = '/ind-success/?slug='+instance.slug
-    if request.user.is_authenticated():
-        bought_obj = Bought.objects.filter(user=request.user, book=instance)
-        if bought_obj.count() > 0:
-            isBought = True
+    elif request.user.is_authenticated():
+        # Comment.objects.filter_by_instance(instance)
+        comments = instance.comments
+        in_cart = Cart.objects.filter(book=instance, user=request.user)
+        the_url = '/ind-success/?slug='+instance.slug
+        if request.user.is_authenticated():
+            bought_obj = Bought.objects.filter(user=request.user, book=instance)
+            if bought_obj.count() > 0:
+                isBought = True
+            else:
+                isBought = False
         else:
             isBought = False
+
+        context = {
+            "title": instance.title,
+            "book": instance,
+            "comments": comments,
+            "comment_form": form,
+            "isBought": isBought,
+            "favour_url": the_url
+        }
+        if in_cart.count() > 0:
+            context['added'] = True
+        else:
+            context['added'] = False
+        return render(request, "font-temp/book-detail.html", context)
+
     else:
-        isBought = False
-
-    context = {
-        "title": instance.title,
-        "book": instance,
-        "comments": comments,
-        "comment_form": form,
-        "isBought": isBought,
-        "favour_url": the_url
-    }
-    if in_cart.count() > 0:
-        context['added'] = True
-    else:
-        context['added'] = False
-    return render(request, "font-temp/book-detail.html", context)
-
-
+        return  HttpResponseRedirect('/login/')
+    
+    
 @login_required()
 def add_to_cart(request, id):
     book = Ebooks.objects.get(id=id)
