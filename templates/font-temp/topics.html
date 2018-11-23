@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+
+<head>
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog - Pendrivers</title>
+
+    
+    {% include "./includes/css.html" %}
+    <style>
+        .image-fav {
+            max-width: 370px;
+            min-width: 370px;
+            max-height: 250px;
+            min-height: 250px;
+        }
+
+        div.scrollmenu {
+            background-color: white;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: gray;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body id="body" class="body-wrapper boxed-menu">
+
+
+
+<div class="main-wrapper">
+    
+    <header id="pageTop" class="header">
+
+        
+
+        <div class="nav-wrapper navbarWhite">
+				
+				{% include "./includes/navbar.html" %}
+			</div>
+    </header>
+
+    
+    <section class="clerfix categoryGrid">
+        <div class="container">
+            <div class="page-header text-center">
+					{% include "./includes/signin.html" %}
+			</div>
+            <div class="row">
+
+                <div class="col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thingsBox thinsSpace">
+                                <div class="thingsImage">
+                                    <img src="https://images.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg"
+                                         alt="Image things" class="img-responsive image-fav">
+                                    <div class="thingsMask">
+                                        <a href="/posts/sub-category/Fiction">
+                                            <h2>Fiction</h2>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="thingsCaption ">
+                                    <ul class="list-inline captionItem">
+                                        <li></li>
+                                        <li>
+                                            <a href="/posts/sub-category/Fiction">Explore</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thingsBox thinsSpace">
+                                <div class="thingsImage">
+                                    <img src="https://images.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg"
+                                         alt="Image things" class="img-responsive image-fav">
+                                    <div class="thingsMask">
+                                        <a href="/posts/sub-category/Poetry">
+                                            <h2>Poetry</h2>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="thingsCaption ">
+                                    <ul class="list-inline captionItem">
+                                        <li></li>
+                                        <li>
+                                            <a href="/posts/sub-category/Poetry">Explore</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thingsBox thinsSpace">
+                                <div class="thingsImage">
+                                    <img src="https://images.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg"
+                                         alt="Image things" class="img-responsive image-fav">
+                                    <div class="thingsMask">
+                                        <a href="/posts/sub-category/Articles">
+                                            <h2>Articles</h2>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="thingsCaption ">
+                                    <ul class="list-inline captionItem">
+                                        <li></li>
+                                        <li>
+                                            <a href="/posts/sub-category/Articles">Explore</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thingsBox thinsSpace">
+                                <div class="thingsImage">
+                                    <img src="https://images.pexels.com/photos/4776/man-sunglasses-art-graffiti.jpg"
+                                         alt="Image things" class="img-responsive image-fav">
+                                    <div class="thingsMask">
+                                        <a href="/posts/sub-category/Creative">
+                                            <h2>Creative</h2>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="thingsCaption ">
+                                    <ul class="list-inline captionItem">
+                                        <li></li>
+                                        <li>
+                                            <a href="/posts/sub-category/Creative">Explore</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paginationCommon blogPagination categoryPagination">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+											<span aria-hidden="true">
+												<i class="fa fa-angle-left" aria-hidden="true"></i>
+											</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4</a>
+                                </li>
+                                <li>
+                                    <a href="#">5</a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+											<span aria-hidden="true">
+												<i class="fa fa-angle-right" aria-hidden="true"></i>
+											</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    {% include "./includes/footer.html" %}
+</div>
+
+
+
+{% include "./includes/js.html" %}
+</body>
+
+
+
+
+</html>

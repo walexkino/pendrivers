@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content - Pendrivers</title>
+
+  
+  {% include "./includes/css.html" %}
+  <style type="text/css">
+    .about {
+        max-width: 60%;
+        margin: auto;
+        line-height: 30px;
+    }
+
+    .new {
+        font-size: 1.2em;
+        font-weight: 900;
+    }
+</style>
+</head>
+
+<body id="body" class="body-wrapper boxed-menu" >
+  
+  
+	
+  <div class="main-wrapper">
+    
+    <header id="pageTop" class="header">
+
+      
+
+      <div class="nav-wrapper navbarWhite">
+        
+        {% include "./includes/navbar.html" %}
+      </div>
+    </header>
+
+
+<section class="clearfix">
+	<div class="container">
+            <h3 class="text-center" style="font-size:2em;">Content Creation</h3><br>
+            <p class="text-center about">
+                    Cotent is king in today's digital world, and you don't have to sweat the process of creating the content for
+                    yourself anymore! <br>
+                    Our team of writers and editors are capable of generating inspiring content for you to feature on your website,
+                    blog, magazine, et cetera. <br>
+                    You can easily and readily have quality content in your platform as well. <br>
+                    How does it work? Shoot us a mail <span style="font-weight: 700;"><a
+                        href="mailto:timpendrivers@gmail.com">Here</a></span></p>
+                <br><br>
+	</div>
+</section>
+
+    
+    {% include "./includes/footer.html" %}
+  </div>
+
+  
+
+  
+  {% include "./includes/js.html" %}
+</body>
+
+
+
+</html>

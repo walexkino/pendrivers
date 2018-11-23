@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanks - Pendrivers</title>
+
+  
+  {% include "./includes/css.html" %}
+  <style type="text/css">
+    .about {
+        max-width: 60%;
+        margin: auto;
+        line-height: 30px;
+    }
+
+    .new {
+        font-size: 1.2em;
+        font-weight: 900;
+    }
+</style>
+</head>
+
+<body id="body" class="body-wrapper boxed-menu" >
+  
+  
+	
+  <div class="main-wrapper">
+    
+    <header id="pageTop" class="header">
+
+      
+
+      <div class="nav-wrapper navbarWhite">
+        
+        {% include "./includes/navbar.html" %}
+      </div>
+    </header>
+
+
+<section class="clearfix">
+	<div class="container">
+            <h3 class="text-center" style="font-size:2em;">You are awesome</h3><br>
+            <p class="text-center about">
+                    Thank you for registering for the contest, check your mail for link to submit your manuscript<br>
+                    Write Away!!!!!!!!!!!!!!!!!!
+                </p>
+                <br><br>
+
+	</div>
+</section>
+
+    
+    {% include "./includes/footer.html" %}
+  </div>
+
+
+
+  
+  {% include "./includes/js.html" %}
+</body>
+
+
+
+</html>

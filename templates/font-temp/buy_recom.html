@@ -1,0 +1,131 @@
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load paystack %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<head>
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Details - Pendrivers</title>
+
+    
+    {% include "./includes/css.html" %}
+
+</head>
+
+<body id="body" class="body-wrapper boxed-menu">
+
+
+
+<div class="main-wrapper">
+    
+    <header id="pageTop" class="header">
+
+        
+
+        <div class="nav-wrapper navbarWhite">
+            {% include "./includes/navbar.html" %}
+
+        </div>
+    </header>
+
+
+    
+    <section class="clearfix paddingAdjustBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="listingTitleArea">
+                        <h2>{{ book.title }}</h2>
+                        <p>{{ book.owner.get_full_name }}</p>
+                        <div class="listingReview">
+
+                            <span>₦{{ book.price }}</span>
+                            <ul class="list-inline captionItem">
+                                
+                            </ul>
+                            {% if request.user.is_authenticated %}
+                            {% paystack_button amount=book.price email="timpendrivers@gmail.com" button_class="btn btn-primary pull-right wid" redirect_url="/contest/bought?sudo=slam" %}
+                            {% else %}
+                                You must be logged in to buy this book
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    
+    <section class="clearfix paddingAdjustTop">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <img src="{{ book.cover.url }}" alt="Image blog" class="img-responsive container"><br>
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="listDetailsInfo">
+                        <div class="detailsInfoBox">
+                            <h3>About This Book</h3>
+                            <p>{{ book.description }}</p>
+                            <p id="bookid" style="display: none">{{ book.id }}</p>
+                        </div>
+                        
+                        <div class="detailsInfoBox">
+                            <h3>Reviews</h3>
+                            {% for comment in comments %}
+                                <div class="media media-comment">
+                                    <div class="media-left">
+                                        <img src="{{ comment.user.user.picture.url }}" class="media-object img-circle"
+                                             alt="Image User">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{ comment.user.get_full_name }}</h4>
+                                        <p>{{ comment.content }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="detailsInfoBox">
+                            <h3>Write A Review </h3>
+                            {% if request.user.is_authenticated %}
+                                <form action="." method="POST"> {% csrf_token %}
+                                    <div class="formSection formSpace">
+                                        {{ comment_form|crispy }}
+                                        <div class="form-group mb0">
+                                            <button type="submit" class="btn btn-primary">Send Review</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            {% else %}
+                                <p>You must be logged in to write a review</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    {% include "./includes/footer.html" %}
+</div>
+
+
+{% include "./includes/js.html" %}
+</body>
+
+
+
+</html>

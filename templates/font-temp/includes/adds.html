@@ -1,0 +1,30 @@
+<div class="col-sm-4 col-xs-12">
+    <div class="sidebarInner">
+        <form>
+            <div class="input-group">
+                <input type="text" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Search..." aria-describedby="basic-addon2">
+                <a role="button" class="input-group-addon" id="basic-addon2">
+                    <i class="icon-listy icon-search-2"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class="sidebarInner">
+        <div class="panel panel-default">
+            <div class="panel-heading">News</div>
+            <div class="panel-body">
+                <ul class="list-unstyle categoryList">
+                    {% for n in news %}
+                    <li>
+                        <a href="{{ n.get_absolute_url }}">{{ n.title }}</a>
+                    </li>
+                    {% endfor %}
+                  
+                </ul>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>

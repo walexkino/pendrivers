@@ -1,0 +1,99 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}} - Pendrivers</title>
+
+
+    {% include "./includes/css.html" %}
+    <style type="text/css">
+        .about {
+            max-width: 60%;
+            margin: auto;
+            line-height: 30px;
+        }
+
+        .new {
+            font-size: 1.2em;
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body id="body" class="body-wrapper boxed-menu">
+
+
+
+    <div class="main-wrapper">
+
+        <header id="pageTop" class="header">
+
+
+
+            <div class="nav-wrapper navbarWhite">
+
+                {% include "./includes/navbar.html" %}
+            </div>
+        </header>
+
+
+        <section class="clearfix">
+            <div class="container">
+                {% if request.user.is_staff %}
+                <a class="btn btn-primary text-center" style="padding: 1em;" href={{request.path}}add>Add</a>
+                {% endif %}
+                {% for faq in faqs %}
+                <h4>Question:</h4>
+                <p>{{faq.question}}</p>
+                <h4>Answer:</h4>
+                <p>{{faq.answer}}</p>
+                <br>
+                {% endfor %}
+            </div>
+        </section>
+
+
+        {% include "./includes/footer.html" %}
+    </div>
+
+
+
+
+    {% include "./includes/js.html" %}
+	
+	
+	<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'sWitjQ7gKLLTvynNQ';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
+</body>
+
+
+
+
+
+
+
+</html>

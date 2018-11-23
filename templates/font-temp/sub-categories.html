@@ -1,0 +1,140 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+
+<head>
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categories - Pendrivers</title>
+
+    
+    {% include "./includes/css.html" %}
+    <style>
+        .favour {
+            height: 250px;
+        }
+
+        h2 {
+            position: absolute;
+            top: 200px;
+            left: inherit;
+            width: 50%;
+            max-width: 100%;
+        }
+
+        h2 span {
+            color: white;
+            letter-spacing: -1px;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 10px 10px 0px;
+        }
+
+        .make-transparent-blue {
+            background-image: url('https://i.pinimg.com/originals/37/23/54/3723540b9a19ea72e70ca1b4c8e69282.jpg');
+            background-color: rgba(255, 255, 255, 0.3);
+            background-position: center;
+            background-blend-mode: overlay;
+            background-size: cover;
+        }
+
+        .welcome-blog {
+            background-image: url("https://images.pexels.com/photos/459688/pexels-photo-459688.jpeg?auto=compress&cs=tinysrgb&h=350");
+            background-color: rgba(255, 255, 255, 0.3);
+            background-blend-mode: overlay;
+            background-position: center;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        div.scrollmenu {
+            background-color: white;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: gray;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        div.scrollmenu a:hover {
+            color: black;
+        }
+    </style>
+
+</head>
+
+<body id="body" class="body-wrapper boxed-menu">
+
+<div class="main-wrapper">
+    
+    <header id="pageTop" class="header">
+
+        
+
+        <div class="nav-wrapper navbarWhite">
+				{% include "./includes/navbar.html" %}
+			</div>
+    </header>
+
+    
+    <section class="clerfix categoryGrid" style="padding: 0 !important;">
+         <div class="scrollmenu text-center">
+                <a href="/posts/sub-category/Fiction">FICTION</a>
+                <a href="/posts/sub-category/Poetry">POETRY</a>
+                <a href="/posts/sub-category/Articles">ARTICLES</a>
+                <a href="/posts/sub-category/Creative">CREATIVE</a>
+            </div>
+        <div class="container">
+            <div class="page-header text-center welcome-blog" style="padding: 1em 1em;">
+                <h4 style="font-weight:900;">Welcome to the Blog</h4>
+                <p style="color: black; font-weight: 600;">Create your own story and grow your audience on our blogging platform. Stand to be found by a growing community of readers pulled by a great host of writers.</p>
+                {% if request.user.is_authenticated %}
+                <a href="/posts/create" class="btn btn-primary" style="text-decoration: none; padding: 1.5em 1.5em !important;">Start creating now</a> 
+                {% else %}
+                <a href="{% url 'register' %}" class="btn btn-primary" style="text-decoration: none; padding: 1.5em 1.5em !important;">Start creating now</a> 
+                {% endif %}
+            </div>
+            <div class="text-center" style="margin-top: 20px">
+                <h3 style="color: skyblue;">{{ category }}</h3>
+            </div>
+            <div class="bootstrapiso">
+                <div class="container">
+                    <div class="row mt-4">
+                        {% for cat in sub_cat %}
+                            <div class="col-4 my-1 p-1">
+                                <div class="align-middle text-white make-transparent-blue" style="height:150px; background-image: url({{ cat.image }}) !important;">
+                                    <a href="/posts/tag/{{ cat.name }}"><h5 class="text-center" style="transform: translateY(65px); color:black;font-weight: 700;font-size: medium;"> {{ cat.name }}</h5></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    {% include "./includes/footer.html" %}
+</div>
+
+
+
+{% include "./includes/js.html" %}
+</body>
+
+
+</html>

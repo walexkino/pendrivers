@@ -1,0 +1,7 @@
+{% if not request.user.is_authenticated %}
+    <h4>Join the Story</h4>
+    <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+    <p>Or Get started <a href="{% url 'register' %}">here</a> </p>
+{% else %}
+    <h4>The Pendrivers, Home of the writers</h4>
+{% endif %}

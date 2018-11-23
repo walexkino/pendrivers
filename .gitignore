@@ -1,0 +1,7 @@
+venv
+.vscode
+*.pyc
+db.sqlite3
+.idea/
+recommended.txt
+media/

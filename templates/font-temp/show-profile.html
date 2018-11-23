@@ -1,0 +1,186 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>User Profile - Pendrivers</title>
+
+	
+	{% include "./includes/css.html" %}
+	<style>
+		.hv {
+			height: 120px;
+			width: 120px;
+		}
+
+		@media (min-width: 1134px) {
+			.container-text {
+				margin-left: 280px;
+				margin-right: 280px;
+			}
+		}
+
+		.medium-button {
+			display: inline-block;
+			text-decoration: none !important;
+			color: gray !important;
+			padding: 1.2em;
+			border: 1px solid gray;
+			background-color: white;
+			border-radius: 5px !important;
+		}
+
+		.medium-button:hover {
+			border: 1px solid black;
+			background-color: black !important;
+			color: white !important;
+		}
+
+		.medium-button:focus {
+			border: 1px solid black;
+			background-color: black !important;
+			color: white !important;
+		}
+
+		.my-navss {
+			margin-top: 3px;
+		}
+
+		.thumbnail {
+			padding: 10px;
+			border-radius: 5px;
+			box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
+		.eb-img {
+			width: 100%;
+
+		}
+	</style>
+
+</head>
+
+<body id="body" class="body-wrapper boxed-menu">
+	
+	<div class="main-wrapper">
+		
+		<header id="pageTop" class="header">
+
+			
+
+			<div class="nav-wrapper navbarWhite">
+				{% include "./includes/navbar.html" %}
+			</div>
+		</header>
+
+		
+		<section class="user-profile-section bg-light">
+			<div class="bootstrapiso" style="background-color: #fbfbfb">
+				<div class="container">
+					<div class="container-text">
+						<div class="row">
+							<div class="col-6 center-block">
+								<h1>{{ user.get_full_name }}</h1>
+								<p>Bio: {{ user.user.bio }}</p>
+								<a href="/accounts/follow/{{user.username}}" class="medium-button">Follow</a>
+							</div>
+							<div class="col-6 center-block">
+								{% if user.user.picture %}
+								<img src="{{ user.user.picture.url }}" class="img-circle img-responsive hv pull-right">
+								{% else %}
+								<img src="https://images.pexels.com/photos/316163/pexels-photo-316163.jpeg?auto=compress&cs=tinysrgb&h=350" class="img-circle img-responsive hv pull-right">
+								{% endif %}
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="container my-navss">
+				<div class="container-text">
+
+					
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#home" aria-controls="home" role="tab" data-toggle="tab">Posts</a>
+						</li>
+						<li role="presentation">
+							<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Ebooks</a>
+						</li>
+						<li role="presentation">
+							<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Likes</a>
+						</li>
+					</ul>
+
+					
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="home">
+							<div class="row">
+								<div class="col-md-12" style="margin-top: 5px;">
+									<h4 style="font-weight: 600;">Posts</h4>
+									{% for i in my_posts %}
+									<div class="thumbnail">
+										<img src="{{i.image.url}}" alt="{{i.title}}">
+										<div class="caption">
+											<h3><a href="{{ i.get_absolute_url }}" style="color: #222222">{{ i.title }}</a></h3>
+											<p>{{ i.get_markdown|truncatechars:100 }}</p>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="profile">
+							<div class="row">
+								<div class="col-md-12" style="margin-top: 5px;">
+									<h4 style="font-weight: 600;">Ebooks</h4>
+									{% for i in ebooks %}
+									<div class="thumbnail">
+										<img src="{{i.cover.url}}" class="eb-img" alt="{{i.title}}">
+										<div class="caption">
+											<h3>{{i.title}}</h3>
+											<p>Sold: {{i.sold}}</p>
+											<p>Price: ₦{{i.price}}</p>
+											<p>{{ i.description|truncatechars:100 }}</p>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="messages">
+							<div class="row">
+								<div class="col-md-12" style="margin-top: 5px;">
+									<h4 style="font-weight: 600;">Liked Posts</h4>
+									{% for i in liked_ %}
+									<div class="thumbnail">
+										<img src="{{i.post.image.url}}" alt="{{i.post.title}}">
+										<div class="caption">
+											<h3><a href="{{i.post.get_absolute_url}}">{{i.post.title}}</a></h3>
+											<p>{{ i.post.get_markdown|truncatechars:100 }}</p>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		
+		{% include "./includes/footer.html" %}
+	</div>
+	
+	{% include "./includes/js.html" %}
+</body>
+</html>

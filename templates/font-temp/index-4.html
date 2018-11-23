@@ -1,0 +1,257 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home - Pendrivers</title>
+
+	{% include "./includes/css.html" %}
+	<style>
+		.image-fav {
+			max-width: 370px;
+			min-width: 370px;
+			max-height: 250px;
+			min-height: 250px;
+		}
+
+		.welcome-home {
+			background-image: url(https://images.pexels.com/photos/338700/pexels-photo-338700.jpeg?cs=srgb&dl=edinburgh-scotland-united-kingdom-338700.jpg&fm=jpg);
+			background-color: rgba(0, 0, 0, 0.3);
+			background-blend-mode: overlay;
+			background-position: center;
+			-webkit-background-size: cover;
+			background-size: cover;
+			color: black;
+		}
+	</style>
+	<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/042459408e509590d2fb94520/95764899d41015cd346fafe67.js");</script>
+</head>
+
+<body id="body" class="body-wrapper boxed-menu">
+	
+	<div class="main-wrapper">
+		<header id="pageTop" class="header">
+
+
+
+			<div class="nav-wrapper navbarWhite">
+
+				{% include "./includes/navbar.html" %}
+			</div>
+		</header>
+
+		<section class="banner-slick-slider">
+			<div class="inner">
+
+				<div class="slide slide1" style="background-image: url(https://res.cloudinary.com/favouroked/image/upload/v1525695655/banner-city-3.jpg);">
+
+					<div class="container">
+						<div class="col-md-6">
+							<div class="slide-inner1 common-inner">
+								<span class="h1" data-animation="drop" data-delay="0.5s">Welcome home.</span>
+								<br>
+								<span class="h4" data-animation="drop" data-delay="0.5s">Discover new writers, blogs and books all hosted here. Connect with a growing community of writers and readers.</span>
+								<br>
+								<a href="{% url 'register' %}" class="btn btn-primary btn-default" data-animation="drop" data-delay="0.5s">START NOW</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide slide2" style="background-image: url(https://res.cloudinary.com/favouroked/image/upload/v1525695631/banner1.jpg);">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2">
+								<div class="slide-inner2 common-inner">
+									<span class="h1" data-animation="zoomIn" data-delay="0.3s">Start Your Personal Business</span>
+									<br>
+									<span class="h4" data-animation="zoomIn" data-delay="0.5s">Don't just be a writer, be an author, and if you are already an author, raise the bar, be a bestseller.</span>
+									<br>
+									<a href="{% url 'register' %}" class="btn btn-primary btn-default" data-animation="zoomIn" data-delay="0.7s">Register</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="populer-city-section bg-dark" style="padding-top: 60px;">
+			<div class="page-header text-center welcome-home" style="padding: 50px;">
+				<h2 style="color: white;">The Pendrivers</h2>
+				<p style="color: white;">Discover new writers, blogs and books all hosted here. Connect with a growing community of writers and readers.</p>
+				<p style="color: white;">Don't just be a writer, be an author, and if you are already an author, raise the bar, be a bestseller.</p>
+				<a style="color: white;" href="{% url 'register' %}">[Get Started]</a>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 col-xs-12">
+						<a href="/posts/sub-category/Fiction/" class="img-box">
+							<img src="https://res.cloudinary.com/favouroked/image/upload/v1525695868/populer-city-1.jpg" alt="Image">
+							<div class="content">
+								<h3>AuthorWrite </h3>
+							</div>
+						</a>
+					</div>
+					<div class="col-sm-4 col-xs-12">
+						<a href="/college" class="img-box">
+							<img src="https://res.cloudinary.com/favouroked/image/upload/v1525695868/populer-city-2.jpg" alt="Image">
+							<div class="content">
+								<h3>College </h3>
+							</div>
+						</a>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<a href="/ebooks" class="img-box">
+							<img src="https://res.cloudinary.com/favouroked/image/upload/v1525695869/populer-city-6.gif" alt="Image">
+							<div class="content">
+								<h3>Store</h3>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- THINGS SECTION -->
+		<section class="clearfix thingsArea">
+			<div class="container">
+				<div class="page-header text-center">
+					<h2>Featured Books
+						<small>Some of our recent books</small>
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div id="thubmnailSlider" class="carousel slide thumbnailCarousel">
+
+							<ol class="carousel-indicators">
+								<li data-target="#thubmnailSlider" data-slide-to="0" class="active"></li>
+								<li data-target="#thubmnailSlider" data-slide-to="1"></li>
+								<li data-target="#thubmnailSlider" data-slide-to="2"></li>
+								<li data-target="#thubmnailSlider" data-slide-to="3"></li>
+							</ol>
+
+
+							<div class="carousel-inner">
+								{% for ebook in ebooks %}
+								<div class="item row {% if forloop.first %}active{% endif %}">
+									<div class="col-md-4 col-sm-6 col-xs-12">
+										<div class="thingsBox">
+											<div class="thingsImage">
+												<img src="{{ ebook.cover.url }}" class="image-fav" alt="Image things">
+												<div class="thingsMask">
+													<ul class="list-inline rating">
+														<li>
+															<i class="fa fa-star" aria-hidden="true"></i>
+														</li>
+														<li>
+															<i class="fa fa-star" aria-hidden="true"></i>
+														</li>
+														<li>
+															<i class="fa fa-star" aria-hidden="true"></i>
+														</li>
+														<li>
+															<i class="fa fa-star" aria-hidden="true"></i>
+														</li>
+														<li>
+															<i class="fa fa-star" aria-hidden="true"></i>
+														</li>
+													</ul>
+													<a href="/ebook-detail/{{ ebook.slug }}">
+														<h2>{{ ebook.title }} {% if ebook.featured %}
+															<i class="fa fa-check-circle" aria-hidden="true"></i>{% endif %}</h2>
+													</a>
+													<p>{{ ebook.owner.get_full_name }}</p>
+												</div>
+											</div>
+											<div class="thingsCaption ">
+												<ul class="list-inline captionItem">
+													<li>₦{{ ebook.price }}</li>
+													<li>
+														<a href="/ebook-detail/{{ ebook.slug }}">Read More..</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+							<a class="left carousel-control" href="#thubmnailSlider" data-slide="prev">
+								<i class="fa fa-angle-left" aria-hidden="true"></i>
+							</a>
+							<a class="right carousel-control" href="#thubmnailSlider" data-slide="next">
+								<i class="fa fa-angle-right" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="clearfix articlesArea">
+			<div class="container">
+				<div class="page-header text-center">
+					<h2>Posts / College
+						<small>Browse the latest Posts </small>
+					</h2>
+				</div>
+				<div class="row">
+					{% for post in posts %} 
+					<div class="col-sm-4 col-xs-12">
+						<div class="thumbnail articleContent">
+							{% if post.image %}
+							<a href="{{ post.get_absolute_url }}">
+								<img src="{{post.image.url}}" style="height:250px; width:100%;" alt="Image articles" class="img-responsive">
+							</a>
+							{% endif %}
+							<div class="caption">
+								<h4>{{ post.timestamp | timesince }} ago by
+									<a href="/accounts/view-profile/{{post.user.username}}">{{post.user}}</a>
+								</h4>
+								<h3>
+									<a href="{{ post.get_absolute_url }}">{{post.title}}</a>
+								</h3>
+								<p>{{ post.get_markdown|truncatechars:100 }}</p>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		{% include "./includes/footer.html" %}
+	</div>
+
+
+
+	{% include "./includes/js.html" %}
+	
+	
+	<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'sWitjQ7gKLLTvynNQ';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
+</body>
+
+</html>
